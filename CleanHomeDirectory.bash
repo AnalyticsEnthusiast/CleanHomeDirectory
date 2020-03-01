@@ -82,8 +82,8 @@ ask2(){
 	elif [[ "${response^}" == "B" ]];
 	then
 		echo "$d: File $path_to_file moved to Backup" | tee -a "$LOG_FILE_PATH"
-		#mv "$path_to_file" /tmp/backup
-		cp "$path_to_file" /tmp/backup
+		mv "$path_to_file" /tmp/backup
+		#cp "$path_to_file" /tmp/backup
 		
 	elif [[ "${response^}" == "D" ]];
 	then
