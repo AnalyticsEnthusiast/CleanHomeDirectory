@@ -11,7 +11,7 @@ no_args="true"
 LOG_FILE_PATH="CleanHomeDirectory_log_$D.log"
 
 help() {
-	echo "Usage: $0 [ -u Username ] [-h Help Text ] [ -l Path to Directory to store log file ]" 1>&2
+	echo "Usage: $0 [-h Help Text ] [-u Username ] [ -l Path to Directory to store log file ]" 1>&2
 }
 
 exit_abnormal() {
@@ -122,7 +122,7 @@ main(){
 	rm -rf /tmp/backup 1> /dev/null 2> /dev/null
 }
 
-while getopts "u:l:h" option; do
+while getopts "hu:l:" option; do
 
 #Check that the user invoking the script has the correct permissions.
 #sudo -v 2> /dev/null 
@@ -183,7 +183,7 @@ done
 [[ "$no_args" = "true" ]] && { exit_abnormal; } 
 
 #Check that the user invoking the script has the correct permissions.
-sudo -v 2> /dev/null
+sudo -v 
 [[ "$?" -eq 1 ]] && { exit_no_permissions; }
 
 result=$(check_user_exists "$NAME")
